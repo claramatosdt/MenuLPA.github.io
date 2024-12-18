@@ -1,0 +1,148 @@
+
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://images-americanas.b2w.io/produtos/4919020509/imagens/papel-de-parede-lanches-lanchonete-hamburguer-bebidas-decor/4919020509_1_large.jpg'); 
+    background-size: cover;
+    background-position: center; 
+     background-attachment: fixed; 
+    color: #333; 
+    line-height: 1.6;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+}
+
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: -1; 
+}
+
+
+h1, h2, h3 {
+    text-align: center;
+    color: #fff; 
+    margin: 10px 0;
+}
+
+
+h1 {
+    font-size: 48px; 
+    color: #fff; 
+    margin-bottom: 20px;
+}
+
+
+h2 {
+    font-size: 36px; 
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+
+h3 {
+    font-size: 24px; 
+    color: #fff;
+}
+
+
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+ul li {
+    font-size: 20px; 
+    color: #fff; 
+    margin: 5px 0;
+}
+
+
+#menu {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px; 
+    width: 100%; 
+}
+
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center; 
+}
+
+#menu li {
+    font-size: 24px; 
+    color: #333;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#menu li:last-child {
+    border-bottom: none;
+}
+
+#menu li:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+.alert {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffcc00;
+    color: #333;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

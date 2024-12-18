@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <html lang="pt-br">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LPA- 2 avaliação</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<h1>MENU - LANCHONETE</h1>
+	<h2>Desafio de LPA [Lógica de Programação Algorítmica]</h2>
+	<h3>Feito por:</h3>
+	<ul>
+	<li>Maria Clara Matos</li>	
+    <li>Anna Luiza Sobral</li>
+	</ul>
+    
+</body>
+
+<script > 
+class Lanchonete {
+    constructor(tamanhoMaximo = 10) {
+        this.fila = new Array(tamanhoMaximo).fill(null); 
+        this.pedidosLanches = {
+            1: "Pastel c/queijo",
+            2: "Coca-cola 500 ml",
+            3: "Milkshake",
+            4: "Coxinha",
+            5: "Enroladinho"
+        };
+    }
+
+    incluirPedido(pedido) {
+        const pedidoNumero = parseInt(pedido, 10); 
+        
+        if (!this.pedidosLanches[pedidoNumero]) {
+            alert("Número do pedido inválido! Escolha entre 1 e 5.");
+            return;
+        }
+
+        const indice = this.fila.indexOf(null); 
+        if (indice === -1) { 
+            alert("Fila Cheia - Não pode incluir mais pedidos.");
+        } else {
+            const item = this.pedidosLanches[pedidoNumero]; 
+            this.fila[indice] = item; 
+            console.log(`Pedido "${item}" adicionado.`);
+        }
+    }
+
+    atenderPedido() {
+        if (this.fila[0] === null) { 
+            alert("Lista Vazia – Não existem pedidos.");
+        } else {
+            const pedidoAtendido = this.fila.shift(); 
+            this.fila.push(null); 
+            console.log(`Pedido "${pedidoAtendido}" atendido.`);
+            alert(`Pedido "${pedidoAtendido}" foi atendido.`);
+        }
+    }
+
+    listarPedidos() {
+        const pedidosRestantes = this.fila.filter(item => item !== null);  
+        if (pedidosRestantes.length === 0) {
+            alert("Lista Vazia – Não existem pedidos.");
+        } else {
+            console.log("Pedidos não atendidos: ", pedidosRestantes.join(", "));
+            alert("Pedidos não atendidos: " + pedidosRestantes.join(", "));
+        }
+    }
+
+    pesquisarPedido(numero) {
+        const numeroPedido = parseInt(numero, 10); 
+        if (!this.pedidosLanches[numeroPedido]) {
+            alert("Número do pedido inválido! Escolha entre 1 e 5.");
+            return;
+        }
+
+        const pedido = this.pedidosLanches[numeroPedido];
+        const posicao = this.fila.indexOf(pedido); 
+
+        if (posicao === -1) {
+            alert("Seu pedido não foi encontrado.");
+        } else {
+            console.log(`Pedido "${pedido}" encontrado na posição ${posicao + 1}.`);
+            alert(`Pedido "${pedido}" encontrado na posição ${posicao + 1}.`);
+        }
+    }
+
+    encerrar() {
+        const pedidosRestantes = this.fila.filter(item => item !== null); 
+        if (pedidosRestantes.length > 0) {
+            alert("Ainda existem pedidos na fila. Primeiro atenda todos os pedidos, e só depois finalize.");
+            return false; 
+        }
+        alert("Programa encerrado.");
+        return true; 
+    }
+
+    listarMenuLanches() {
+        let menu = "Menu de Lanches:\n";
+        for (const [codigo, lanche] of Object.entries(this.pedidosLanches)) {
+            menu += `${codigo} . ${lanche}\n`;
+        }
+        alert(menu); 
+    }
+}
+
+
+const lanchonete = new Lanchonete();
+let encerrar = false;
+
+while (!encerrar) {
+    const menu = ` LANCHONETE 
+1 – INCLUIR PEDIDO
+2 – ATENDER PEDIDO
+3 – LISTAR PEDIDOS
+4 – PESQUISAR PEDIDO
+5 – ENCERRAR
+Escolha uma opção:`;
+    const opcao = prompt(menu); 
+
+    switch (opcao) {
+        case "1":
+            lanchonete.listarMenuLanches(); 
+            const numeroPedido = prompt("Qual o número do pedido (1-5)?: ");
+            lanchonete.incluirPedido(numeroPedido); 
+            break;
+        case "2":
+            lanchonete.atenderPedido(); 
+            break;
+        case "3":
+            lanchonete.listarPedidos(); 
+            break;
+        case "4":
+            const pesquisarPedido = prompt("Qual o número do pedido para o sistema buscar?:");
+            lanchonete.pesquisarPedido(pesquisarPedido); 
+            break;
+        case "5":
+            encerrar = lanchonete.encerrar(); 
+            break;
+        default:
+            alert("Opção inválida. Tente novamente."); 
+    }
+}
+
+
+
+</script>
+</html>
